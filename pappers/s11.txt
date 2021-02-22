@@ -1,0 +1,78 @@
+Diseño e implementación de un modelo del protocolo AURP para redes de sensores subacuáticas
+
+http://hdl.handle.net/10251/88608
+
+- Como se define un protocolo
+Este protocolo puede clasificarse de diferentes formas. Por ejemplo, según la arquitectura tiene
+una estructura híbrida porque incluye diferentes elementos entre los que destacan los vehículos
+submarinos autónomos, utilizados para la recolección de los datos. Estos datos le son ofrecidos
+por unos nodos denominados puertas de enlace que centralizan la información de los sensores
+cercanos. Por este motivo, también se pueden clasificar como Clusters de nodos. Las AUV no
+envían la información directamente a la estación de la superficie sino que la envían a un
+sumidero sumergido que con medios como fibra óptica envían la información a la estación en
+superficie.
+En cuanto a la forma de calcular las rutas de envío, ésta es proactiva puesto que envía
+periódicamente paquetes de configuración de la red para que los nodos actualicen su puerta de
+enlace.
+Este protocolo ha recibido una gran atención de la comunidad científica, como indica que haya
+sido citado 35 veces en revistas indexadas por ISI.
+
+- Caracteristicas de un protocolo
+El protocolo contempla 4 tipos de nodos en función de su funcionalidad:
+	• Sensores. Son los nodos que generan los datos y los envían a su puerta de enlace.
+	También pueden hacer de puerta de enlace de otros sensores. Recogen la información
+	de dichos sensores y la envían a su puerta de enlace.
+	• Puertas de enlace. Son los encargados de recolectar la información de los sensores
+	cercanos, los que estén en su “cluster”. Cuando detectan que una AUV está cerca,
+	negocian cómo va a ser la comunicación y le envía los datos si todo es correcto.
+	• AUV o submarino. Este nodo se mueve con un movimiento prefijado y va recolectando
+	los datos de los nodos puerta de enlace. Cuando está cerca del sumidero envía toda la
+	información al sumidero haciendo previamente una negociación.
+	• Sumidero. Es el nodo encargado de recoger la información. Este nodo puede obtener la
+	información mediante la AUV o de forma directa cuando los sensores le envían
+	directamente la información. En ese caso, el sumidero hace la función de puerta de
+	enlace.
+
+
+- Como se diseña un protocolo
+El esquema general del protocolo deja patente esa diferenciación en dos partes. Si se presta
+atención a AURPHeader se observan dos métodos que heredan de una clase genérica que
+proporciona el simulador. Cada una de las clases corresponde a diferentes tipos de mensajes y
+por lo tanto de comunicación: AURPHeader corresponde a las comunicaciones no asociadas con
+el submarino y AURPHeaderAUV son los tipos de mensajes relacionados con comunicaciones
+específicas con el submarino.
+Por otra parte, está AURPNode el cual posee tres clases que todas ellas heredan de la clase
+genérica Object. La clase principal es AURPNode y las otras dos son clases creadas para dar
+más funcionalidad. Como se puede apreciar, dentro de AURPNode hay una lista con tantos
+elementos cono sean necesarios de QueueElement y AURPpacket.
+
+- Como se implementa un protocolo
+Este bloque posee diferentes variables que se pueden clasificar en:
+	• Parámetros del nodo. Son variables que identifican al nodo o necesarias para su
+	funcionamiento o lógica de negocio, tales como id, puerta de enlace, número de
+	secuencia o packetnumber(seq), etc.
+	• Datos de envío y recepción. Son variables que contabilizan el número de eventos de
+	diferentes tipos, todos ellos relacionados con envío y recepción de datos. Tales como
+	números de paquetes recibidos, número de paquetes generados, número de paquetes de
+	solicitud, datos, PHE, ack, etc se han recibido.
+	• Parámetros de envío. Variables relacionadas con procesos muy concretos de envío como
+	pueden ser el tiempo de espera para procesar la cola de paquetes PHE desde que se
+	recibe el primer mensaje PHE o variables semáforo.
+	• Buffers para paquetes. Lista donde se almacenan los distintos paquetes ya sean paquetes
+	para enviar, paquetes ya enviados, cola de paquetes PHE o paquetes PHE ya
+	procesados.
+Una vez explicado las variables, el siguiente apartado son las funciones y diferentes tipos:
+	• Constructor. Es el método para construir el objeto y definir los valores por defecto.
+	• Inserción y obtención de parámetros. Funciones encargadas de modificar o entregar el
+	dato solicitado.
+	• Obtención datos de envío y recepción. Muestran los datos de la simulación relacionados
+	con las variables descritas anteriormente, las cuales tienen que ver con envío y
+	recepción de paquetes.
+	• Métodos de envío. Métodos para enviar los diferentes tipos de datos. Hay que
+	mencionar algunas funciones especiales como el gestor de datos que gestiona la
+	creación y el envío de mensajes y se puede programar para que se ejecute cada cierto
+	tiempo. Además Send_buffer_loop es una función que envía de forma recursiva todos
+	los paquetes que estén en el buffer de envío. Al ser recursivo, necesita un lanzador
+	Send_buffer.
+	• Recepción. Son las funciones encargadas de gestionar qué hacer con los paquetes que se
+	reciben. Hay una función por cada tipo de nodo y por los dos tipos de comunicación.

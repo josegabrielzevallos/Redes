@@ -1,0 +1,32 @@
+INTEGRANTES:
+-Jose Gabriel Zevallos Delgado de la Flor
+-Oscar Andree Mendoza Alejandro
+
+The Reachability Query over Distributed Uncertain Graphs on distributed graph database Neo4j
+
+https://ieeexplore.ieee.org/document/7164987
+
+OBJETIVO 
+nuestro propósito es desarrollar estrategias distribuidas eficientes para seleccionar en primer 
+lugar todas las subgrafías máximas cuyas probabilidades de accesibilidad se pueden calcular en tiempo 
+polinómico de manera eficiente. 
+
+RESULTADO
+Encontramos que con el aumento de las instancias de muestreo, nuestro "DistRV" propuesto supera a los 
+otros dos métodos ingenuos en tiempo de cálculo y costo de comunicación, y tiene el menor error relacionado.
+
+COMO SE LOGRO 
+Reducción de gráfico distribuido: al observar el gráfico original, encontramos que la probabilidad de alcance 
+de un gran parte del gráfico se puede calcular en tiempo polinómico.
+Verificación distribuida: después del gráfico distribuido paso de reducción, solo queda un gráfico más pequeño 
+cuya probabilidad de accesibilidad necesita ser verificada aún más.
+
+
+COMO FUE LA EVALUACION
+Conjuntos de datos: utilizamos 3 conjuntos de datos reales que utilizamos, LiveJournal,WikiTalk, DBLP1.
+Generamos la función de masa de probabilidad utilizando la distribución normal N (μ, σ) (μ ∈ [0, 1] es el 
+esperado y σ ∈ [0, 1] es la varianza de la función de masa de probabilidad).
+
+Entorno: utilizamos un clúster compuesto por 1 maestro servidor y 10 servidores esclavos. Cada servidor 
+tiene una memoria de 16 GB,un disco duro de 8TB y 2 CPU de Intel (R) Xeon (R) CPU E5-2620 con frecuencia 2.
+00GHz. Cada CPU tiene 6 núcleos y 12 hilos.

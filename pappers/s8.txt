@@ -1,0 +1,45 @@
+Improved quality of protocol testing through techniques of experimental design
+https://ieeexplore.ieee.org/document/368821
+
+- Como se define un protocolo
+el protocolo de red establece la semántica y la sintaxis del intercambio de información, 
+algo que constituye un estándar. Las computadoras en red, de este modo, tienen que 
+actuar de acuerdo a los parámetros y los criterios establecidos por el protocolo en 
+cuestión para lograr comunicarse entre sí y para recuperar datos
+
+- Caracteristicas de un protocolo
+En las pruebas de conformidad del protocolo, se ejerce un interruptor particular bajo 
+prueba para verificar la conformidad con requisitos en un TR particular. La corriente
+el proceso implica escribir el plan de prueba, desarrollar los scripts de prueba 
+(a menudo software para pruebas automatizadas sistemas), ejecutando los scripts de 
+prueba, analizando el datos y finalmente informar los resultados.
+
+- Como se diseña un protocolo
+Cuando se aplican procedimientos de negociación de canales sin restricciones y la 
+negociación no tiene éxito, los siguientes factores juegan un papel en el tratamiento 
+aplicado a las partes involucradas:
+
+Mensaje de negociación del canal ,Capacidad portadora ,Si la negociación ocurrió antes 
+o después de que el temporizador T303 haya expirado ,Número de instalaciones DS-1 en 
+la interfaz de terminación y cómo se señalizó el canal B .
+
+los factores y niveles que determinan el tratamiento. para el rechazo de llamadas son:
+
+Causa valor,Capacidad portadora,Mensaje de compensación de llamadas,Rechazo de llamadas 
+antes o después de la llamada, la parte transmite un mensaje de PROCEDIMIENTO DE LLAMADA,
+Rechazo de llamadas antes o después de que el temporizador T303 haya expirado.
+
+- Como se implementa un protocolo
+a herramienta AETG ha producido diseños de prueba donde la fracción de todas las 
+combinaciones de prueba posibles cubiertas en los diseños de prueba, n / N, está en 
+el rango de 0.08 - 0.17. Esta la fracción disminuye a medida que K, el número de 
+factores en la aplicación, aumenta. Por ejemplo, si una aplicación tiene K = 7 y 
+L1 = L2 = L3 = 7,4 = Lg = 3 y Lg = L7 = 2, entonces el diseño AETG contendrá 54 
+pruebas de un total de 12348 pruebas posibles. La fracción de todas las combinaciones 
+de prueba incluidas en este diseño de prueba es n / N = 0.004, lo que corresponde a 
+una disminución del 99.6% en el número de todas las pruebas.
+
+si K = 2, tenemos n = N y el diseño de la prueba contiene todas las pruebas posibles, porque 
+requerimos que se incluyan todas las combinaciones por pares. Si K = 3 y L1> = L2> = L3, 
+entonces tenemos n / N = l / L3. Por lo tanto, el potencial de reducción en n / N aumenta a 
+medida que aumenta K y aumenta el beneficio de la aplicación de la herramienta AETG. 

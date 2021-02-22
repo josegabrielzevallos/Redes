@@ -1,0 +1,76 @@
+Design of MAC protocols for ad-hoc networks using intelligent directional antennas.
+https://upcommons.upc.edu/handle/2099.1/3549
+
+- Como se define un protocolo
+La idea de antenas inteligentes es usar estaciones base con patrones de
+antenas que no sean fijas, pero adaptarlos a las condiciones actuales del
+medio radio. Esto se puede visualizar como la antena que dirige un lóbulo sólo
+hacia la dirección de la comunicación como es el caso de las antenas
+direccionales. Una antena direccional puede transmitir una señal en cualquier
+dirección, usando un array de antenas denominado array de elementos. Al
+aumentar el número de elementos, la ganancia de la antena puede controlarse
+más efectivamente. Hay antenas direccionales de 1 elemento
+(omnidireccional), 2, 4, 8, 16, etc. 
+
+- Caracteristicas de un protocolo
+La arquitectura MAC del estándar 802.11 se compone de dos funcionalidades
+básicas: la Función de Coordinación Puntual (PCF) y la Función de
+Coordinación de Distribución (DCF). La función de coordinación es la
+funcionalidad que determina dentro de un conjunto básico de servicios (BSS),
+cuándo una estación puede transmitir y/o recibir datos de protocolo a nivel
+MAC a través del medio inalámbrico. En el nivel inferior del subnivel MAC se
+encuentra la función DFC y su funcionamiento se basa en técnicas de acceso
+aleatorias de contienda por el medio. El tráfico que se transmite bajo esa
+funcionalidad es de carácter asíncrono ya que estas técnicas de contienda
+introducen retardos aleatorios y no predecibles, no tolerados por los servicios
+síncronos. 
+El protocolo IEEE 802.11 asume el uso de antenas omnidireccionales en todos
+los nodos. De manera que para utilizar antenas direccionales se debe diseñar
+un protocolo específico. Los protocolos MAC donde se utilizan las antenas
+direccionales se denominan Directional-MAC (DMAC).
+El uso de antenas direccionales se plantea para redes ad-hoc ya que uno de
+los posibles beneficios es el incremento del rehúso espacial. Dos nodos
+vecinos podrían comunicarse a la vez en diferentes direcciones. 
+
+- Como se diseña un protocolo
+Este protocolo está basado en el envío de RTS circular como en . La
+transmisión del RTS es direccional y se envía consecutivamente y
+circularmente a todos los nodos vecinos. Se asume que todos los nodos tienen
+un máximo de antenas que cubre el área del transmisor. Primero se envía un
+RTS en una dirección predefinida como es la primera antena direccional, la
+antena 0. Seguidamente se envía un RTS en la dirección de la segunda
+antena, 1. Se envía un RTS en las direcciones de las antenas hasta llegar al
+máximo de antenas. 
+El esquema del CTS circular es el mismo que el del RTS circular. Cuando el
+nodo receptor recibe el RTS, y después del envío del RTS por la última antena
+del nodo transmisor, el nodo receptor envía el CTS en la dirección del nodo
+transmisor. Seguidamente se envía un CTS por todas las antenas e informa de
+esta manera a los nodos vecinos que hay una transmisión. 
+
+- Como se implementa un protocolo
+Se ha desarrollado un software de simulación en lenguaje C++. El simulador
+está constituido por variables globales, que definen parámetros generales de la
+simulación; por una clase, que define el objeto nodo; y por funciones que
+realizan el procesado de los mecanismos definidos en los protocolos
+simulados.
+Los parámetros de la simulación se definen al inicio del programa de manera
+que se pueden variar fácilmente. Esto da flexibilidad al simulador ya que se
+pueden asignar valores de parámetros distintos y obtener diferentes resultados
+con el mismo simulador. Por ejemplo, el número de nodos y la topología de
+cada escenario. Así pues, se han desarrollado dos simuladores:
+     -Simulador para antenas omnidireccionales
+     -Simulador para antenas direccionales.
+
+De cada simulador se han obtenido resultados de cada una de los escenarios.
+Se define una única clase denominada “Cnodo” donde se incluyen todos los
+parámetros de los nodos y funciones.
+A continuación, para cada simulador se describe:
+         
+	-Los parámetros generales del sistema, definidos como variables
+         globales.
+         -Las variables locales de cada nodo, definidas como variables de la clase
+         “Cnodo”, y los procesos de cada nodo, definidos como métodos de
+          clase.
+         -Los mecanismos de protocolo, definidas como funciones globales.
+         -Un diagrama de flujo donde se visualiza la estructura y funcionamiento
+         del simulador. 

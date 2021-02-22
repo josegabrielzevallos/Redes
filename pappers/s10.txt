@@ -1,0 +1,59 @@
+Development communications protocol for networks HAN in SmartGrids
+http://dx.doi.org/10.4067/S0718-33052017000100015 
+
+- Como se define un protocolo
+El protocolo propuesto, que utilizará la red HAN, en principio une el concepto de las tecnologías 
+de comunicaciones industriales, así como el modelo de cifrado de los sistemas GPS, donde las tramas 
+de datos "propietarias" están asociadas tanto a protocolos industriales como al cifrado en las tramas 
+de información de los sistemas GPS. Estos son capaces de convivir sin problemas en el ambiente de su 
+protocolo portador. Es decir, cuando un protocolo es capaz de soportar al otro, como es el caso de 
+TCP/IP, donde el datagrama IP transporta al segmento TCP. El protocolo propuesto, es muy simple, ya que 
+tiene como base de conformación de la trama al protocolo de transmisión de datos GPS NMEA 0183, el que 
+maneja su información en base a símbolos cifrados en ASCII con delimitadores por cada campo de datos como 
+lo que facilita los algoritmos de disección de la trama, lo que implica la eliminación de métodos de cifrados 
+para la traducción directa del contenido de ella. La trama del protocolo de red HAN trabajará en la capa de 
+aplicación y presentación. Este protocolo trabajará bajo la modalidad de Polling o encuesta de cada nodo para 
+el control de acceso al medio, eliminando los métodos de detección y/o anticipación ante colisiones. 
+
+- Caracteristicas de un protocolo
+El ciclo de máquina está compuesto por cuatro períodos de la frecuencia de reloj. Esto implica que el tiempo 
+de un ciclo de máquina (TCM) corresponde a: Donde TCN (Tiempo de ciclo de máquina) y fCLK es la frecuencia de 
+reloj del procesador o MCU para el cual en este caso empírico se ha desarrollado en base a un reloj de 40 MHz.
+Ahora bien, la instrucción más compleja que el procesador tiene, es la transmisión por el UART, la cual para su 
+ejecución total, utiliza aproximadamente cuatro ciclos de máquina, por lo que este tiempo genera un ciclo de 
+instrucción o C.I. Tiempo estimado en las MCUs con arquitectura Von Neumann.Considerando que el tiempo esperado 
+para la recepción de un paquete es función del ancho de banda disponible, este se calculará en su peor condición, 
+la cual corresponderá al 10% del ancho de banda total disponible en  una red altamente congestionada y tráfico 
+constante9. Adicionalmente el ancho de banda total estará dado por un enlace comercial típico de 4 Mbps, del cual 
+se dispondrá solo del 10% del ancho de banda total, por ende el tiempo de respuesta Trx que se puede esperar 
+corresponderá a: Finalmente, se modelará el proceso de transmisión de la red HAN, con un sistema de colas de una 
+fila y un servidor, que se denotarán con una distribución exponencial para los tiempos de arribo de paquetes de 
+información al conversor UART/SPI a Ethernet de la forma:
+
+- Como se diseña un protocolo
+
+1) Hello: Corresponde al saludo desde el nodo maestro.
+2) Acknowledge: Corresponde a la confirmación de una acción enviada desde otro nodo, ya sea del maestro o esclavo.
+3) Status: Corresponde al requerimiento de envío del segmento Status Frame o Status Data.
+4) Status Data: Corresponde a la trama de datos de variables eléctricas.
+5) Fin: Corresponde a la finalización de comunicación entre el nodo maestro y esclavo.
+6) Interruption: Corresponde al envío del flag de interrupción ante un estado de urgencia que debe ser atendido en la red HAN.
+7) Action: Corresponde al aviso de envío de un segmento con comandos.
+8) Action Code: Corresponde al envío de un código determinado de acción a realizar.
+9) Action Status: Corresponde al envío de confirmación de que una acción se realizó en forma normal, o esta no se ha llevado a cabo.
+10) Syncronization: Corresponde al envío de una trama de sincronización en la red. Esta se utilizará para el reconocimiento de nodos por parte del maestro en una red.
+11) Sent Status Frame: Corresponde al envío de una trama de estados, que se realiza después de un comando, o que se utiliza para sincronía de red.
+12) Timeout: Corresponde al tiempo de espera agotado de una trama Acknowledge, o una trama de estados, donde este flag ayudará para reenviar el comando.
+
+- Como se implementa un protocolo
+La implementación del protocolo de la red HAN, se ha realizado con dos nodos. El primero de 
+ellos correspondientes al nodo maestro, o estructura AMI de la red HAN, y el otro, correspondiente
+a un nodo de adquisición de datos (datos de mediciones de variables eléctricas) de la red HAN, 
+en donde ambos nodos fueron modelados y simulados en base a sus funciones en la red HAN, pero 
+que desde el punto de vista de red de datos, estos fueron interfaces de comunicación y computadoras 
+en que físicamente interactuaron para poder realizar las pruebas. Esto se realizó a modo de 
+comprobar la hipótesis principal, que es poder tener una red "virtual" que se gestione así misma 
+por medio de un protocolo que sea transmitido por medio de una red física como es la red domiciliaria. 
+También mediante estas pruebas analizarán y diseccionarán los paquetes del protocolo de la red HAN, 
+a modo de revisar el flujo de comunicación de este, donde posteriormente se realizará un análisis de 
+la carga del protocolo de la red HAN en un tiempo dado.

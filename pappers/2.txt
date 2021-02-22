@@ -1,0 +1,21 @@
+QUIC Protocol Performance in Wireless Networks
+
+https://ieeexplore.ieee.org/document/8524247/authors#authors
+
+OBJETIVO 
+El objetivo principal de este trabajo es explorar las funcionalidades QUIC para sugerir técnicas
+para mejorar el rendimiento, la velocidad y la eficiencia en redes inalámbricas. Tambien se propone
+la reintroducción de FEC para minimizar las latencias de retransmisión.
+
+RESULTADO
+Resultados del banco de pruebas muestran que el rendimiento general con QUIC muestra una mejora 
+cerca del 50% sobre TCP / IP en flujos no restringidos para descargas inalámbricas de archivos 
+de video. Como resultado del 0- de QUIC
+
+COMO SE LOGRO 
+Las pruebas se realizaron en un total de cinco épocas para minimizar variación fuera del 
+alcance de una comparación de rendimiento directo de QUIC y TCP / IP. 
+
+COMO FUE LA EVALUACION
+La equidad de la utilización del ancho de banda disponible por los cuatro flujos diferentes
+(2 TCP y 2 QUIC) se calculó de acuerdo con el índice de equidad de Jain.

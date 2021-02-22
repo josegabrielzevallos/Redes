@@ -1,0 +1,25 @@
+Which secure transport protocol for a reliable HTTP/2-based web service: TLS or QUIC?
+
+https://ieeexplore.ieee.org/document/8024637
+
+OBJETIVO 
+El documento tiene como objetivo llenar este vacío de los aspectos de seguridad de los dos protocolos de transporte y 
+propone un primer análisis de seguridad de TLS / TCP y QUIC / UDP.En función de sus características, este documento 
+identifica lasvulnerabilidades de los dos protocolos y evalúa sus impactos en los servicios web basados ​​en HTTP / 2.
+Este estudio puede permitir a los desarrolladores o administradores de servidores web seleccionar TLS / TCP o QUIC / UDP.
+
+RESULTADO
+Nuestro análisis muestra que QUIC / UDP permite tener un servidor más confiable, ya que el servidor no puede bloquearse o 
+alcanzar un estado en el que el servicio web ofrecido a los usuarios finales se degrada en gran medida. Aunque los ataques 
+QUIC / UDP afectan principalmente a los usuarios finales, el impacto en el servidor es limitado, mientras que los ataques 
+TLS / TCP apuntan más precisamente al servidor, con el objetivo de hacer un DDOS.
+
+COMO SE LOGRO 
+Las amenazas se clasifican como intercepción, interrupción, modificación y fabricación. Para cada ataque identificado, 
+primero señalamos el modelo de ataque y la amenaza, describimos la vulnerabilidad del protocolo que permite que el 
+ataque sea factible, así como cuán complejo es configurarlo y cuáles son los inconvenientes con respecto a la QoE del
+usuario final (Calidad de experiencia) y QoS (calidad de servicio) proporcionadas por el servicio.
+
+COMO FUE LA EVALUACION
+Enumera las vulnerabilidades identificadas de los dos protocolos, cuando se utilizan con HTTP / 2, en función 
+de un modelo de ataque activo o pasivo.

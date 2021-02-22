@@ -1,0 +1,22 @@
+HTTP/2 PERFORMANCE EVALUATION WITH LATENCY AND PACKET LOSSES
+
+https://ieeexplore.ieee.org/document/8319285
+
+OBJETIVO 
+Se espera que el protocolo resuelva el problema de bloqueo de Head of Line (HOL: fenómeno que limita el 
+rendimiento que ocurre cuando el primer paquete detiene una línea de paquetes) con una sola conexión TCP.
+
+RESULTADO
+Se investigo que el rendimiento archivo de transferencia utilizando HTTP/2 es un resultado diverso. Entonces
+mostró que el protocolo con una sola conexión podría proporcionar rendimientos comparables con el HTTP/1.1 con
+múltiples conexiones en muchas condiciones. Además, encontramos  que el rendimiento del HTTP/2 se redujo 
+significativamente a medida que los índices de pérdida de paquetes aumentaron con la alta latencia. 
+
+COMO SE LOGRO 
+Se evaluo desempeños con HTTP/1.1 y /2 en un red experimental. En la red, un servidor HTTP y un navegador
+web se ejecutaron en la PC del servidor y PC cliente, respectivamente. La PC puente entre el servidor y
+Las PCs cliente eran un emulador de red que generaba artificialmente tiempo de retraso de red y pérdida de 
+paquetes.
+
+COMO FUE LA EVALUACION
+Se midio el tiempo de transferir archivos usando HTTP desde el servidor al cliente.

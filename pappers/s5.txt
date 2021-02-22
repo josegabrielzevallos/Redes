@@ -1,0 +1,31 @@
+INTEGRANTES:
+-Jose Gabriel Zevallos Delgado de la Flor
+-Oscar Andree Mendoza Alejandro
+(Comentario: este tranajo solo lo habia envido oscar ahora lo estoy enviando yo gracias profe y 
+disculpe por la molestia)
+A Preconditioned Graph Diffusion LMS for Adaptive Graph Signal Processing
+
+LINK: https://ieeexplore.ieee.org/document/8553273
+
+OBJETIVO:
+En este artículo, se emplearon estrategias de difusión LMS para estimar los coeficientes de 
+filtro de grafos de una manera adaptativa y distribuida. También se desea mejorar la tasa 
+de convergencia de las estrategias basadas en difusión LMS existentes que pueden sufrir 
+una gran dispersión del valor propio de las señales de entrada debido al uso de operadores 
+de cambio de grafos sin preservación de energía.
+
+PROPUESTA:
+Se hizo una simulación para poder tener unos resultados más próximos a la realidad y validar
+los modelos teóricos.
+Se utilizo el algoritmo de difusión (LMS), el algoritmo de difusión Newton (LMSN) y el 
+algoritmo de difusión pre-condicionado (PLMS) para estimar los coeficientes del filtro de 
+grafos usando diferentes tipos de operadores de desplazamiento.
+Se generó una red de sensores ponderada no dirigida de 20 nodos usando GSPBOX, cada nodo 
+está conectado a sus 5 vecinos más cercanos. El ruido v(i) fue gaussiano de media cero 
+con matriz de covarianza R_v=diag{o(^2)(_v,k)}(^N)(_k=1). La varianza se generó de manera
+aleatoria a partir de la distribución uniforme U(0:1;0:15). Los coeficientes de filtro de
+grafos también se generaron aleatoriamente a partir de la distribución uniforme U(0,1).
+
+RESULTADOS:
+Los resultados de la simulación validaron los modelos teóricos y mostraron la eficiencia 
+de los algoritmos propuestos.

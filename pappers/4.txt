@@ -1,0 +1,34 @@
+The HTTP/2 Server Push and Its Implications on Mobile Web Quality of Experience
+
+https://ieeexplore.ieee.org/document/8732204
+
+OBJETIVO 
+En este artículo, investigamos experimentalmente la QoE web con HTTP / 2. Evaluamos 
+la QoE web de varios sitios web populares en un banco de pruebas controlado emulado 
+con trazas reales de redes 4G / LTE y 3G.
+
+RESULTADO
+Los resultados experimentales muestran que, en promedio, hay un 24% menos de 
+PLT con HTTPI2. También observamos una sobrecarga de conexión TCP significativa en 
+HTTP / l.l en ambas condiciones de red. Esto no solo aumenta la carga en el servidor 
+(en términos de mantenimiento de la información de estado) sino que también consume 
+más energía en los dispositivos móviles. 
+Tambien revelan que HTTP/2 funciona bastante bien incluso en redes con 
+tiempos de ida y vuelta más altos. Sin embargo, identificamos las condiciones bajo 
+las cuales HTTP/2 no es muy bueno. Nuestros resultados demuestran que HTTP / l.l 
+proporciona PLT más bajo que HTTP/2 a medida que aumenta el PLR.
+
+COMO SE LOGRO 
+Seleccionamos 12 sitios web populares del ranking de Alexa y los reflejamos para 
+realizar los experimentos controlados. Al realizar los experimentos en un banco de 
+pruebas basado en trazas con trazas de red 4G/LTE y 3G, observamos que HTTPI2 supera a 
+HTTP / l.l en términos de PLT.También investigamos el impacto de la latencia de red y 
+PLR en la QoE de la web móvil.
+
+
+COMO FUE LA EVALUACION
+Con estadisticas de los recursos del sitio web utilizados para los experimentos.
+Distribución de PLT observada para los sitios web cuando se carga con HTTPI2 y 
+HTTP / 1.1 en condiciones de red 4GILTE.
+Número de conexiones TCP establecidas cuando la página web se carga con HTTP / l.1
+en condiciones de red 4GILTE basada en rastreo.

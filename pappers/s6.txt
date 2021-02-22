@@ -1,0 +1,29 @@
+INTEGRANTES:
+-Jose Gabriel Zevallos Delgado de la Flor
+-Oscar Andree Mendoza Alejandro
+
+Research on architecture and query performance based on distributed graph database Neo4j
+
+https://ieeexplore.ieee.org/document/6703387
+
+OBJETIVO 
+La base de datos Neo4j basada en el modelo gráfico es diferente de otra base de datos en la implementación.
+En primer lugar, este artículo explora la arquitectura del sistema y su mecanismo interno. En segundo lugar, 
+Neo4j ofrece tres formas de consultar y evaluar el rendimiento de su consulta desde varias dimensiones: tamaño 
+de datos, complejidad de la consulta, número de consulta, etc.
+
+RESULTADO
+Solo evaluar el rendimiento de las consultas de un sistema Neo4j puede conocer el rendimiento de las consultas 
+del clúster HA. Para el sistema Neo4j, la selección de formas de consulta debe tenerse plenamente en cuenta el 
+tamaño de los datos, la complejidad de la consulta, los números de consulta, el costo de desarrollo o mantenimiento 
+y otros factores en cada escenario de aplicación específico.
+
+COMO SE LOGRO 
+Pruebas de rendimiento:Test Environment ,Test Method ,Test Results.La influencia del método de consulta para consultar 
+el rendimiento,la influencia del tamaño de los datos en el rendimiento de la consulta,consultar estabilidad de rendimiento,
+la influencia de la complejidad de la consulta en el rendimiento de la consulta.
+
+COMO FUE LA EVALUACION
+Entorno de hardware: CPU Intel core i3-3220 (3.30 GHz), memoria de 4 GB (Kingston DDR3 1600 MHZ). 
+Entorno de software: utilizando la versión empresarial 1.9.1 y escribiendo aplicaciones de prueba en modo incrustado, 
+la memoria máxima disponible de JVM es 247M.
