@@ -1,0 +1,40 @@
+PROTOCOL DEFINITION
+From: client.cpp 	To slaves[id]
+
+Operations		Code
+------------	-----
+Insert			1
+Update			2
+Delete			3
+Select			4
+Exploration		5
+
+Object			Code
+-------------	-----
+Node			1
+Relationship	2
+
+* N is defined by user
+
+> INSERT
+1. NODE
+Sequence order:		(Operation Code)(Object Code)(Size Name)	(Name Node)				(Size Value Node)	(Value Node)
+					(1 position)    (1 position) (N positions)  (Name size positions)	(N positions)		(Value size positions)
+
+2. RELATIONSHIP
+Sequence order:		(Operation Code)(Object Code)(Size Name)	(Name Node)				(Size Name)		(Name Node)
+					(1 position)    (1 position) (N positions)  (Name size positions)	(N positions)   (Name size positions)
+
+> UPDATE
+1. NODE
+Sequence order:		(Operation Code)(Object Code)(Size Name)	(Name Node)				(Size Value Node)	(Value Node)
+					(1 position)    (1 position) (N positions)  (Name size positions)	(N positions)		(Value size positions)
+
+> DELETE
+1. NODE
+Sequence order:		(Operation Code)(Object Code)(Size Name)	(Name Node)				
+					(1 position)    (1 position) (N positions)  (Name size positions)
+
+2. RELATIONSHIP
+Sequence order:		(Operation Code)(Object Code)(Size Name)	(Name Node)				(Size Name)		(Name Node)
+					(1 position)    (1 position) (N positions)  (Name size positions)	(N positions)   (Name size positions)
